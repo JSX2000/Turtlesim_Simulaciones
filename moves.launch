@@ -1,0 +1,24 @@
+<launch>
+	
+	<node pkg="turtlesim" type="turtlesim_node" name="el_turlesim" />
+
+	<arg name="node_kill_delay" default="1s" />
+
+	<node pkg="rosservice" type="rosservice" name="kill_turtle_1" 
+		  args="call /kill 'turtle1'"/>
+	
+	<node pkg="rosservice" type="rosservice" name="kill_turtle_2" 
+		  args="call /kill 'turtle2'"/>
+
+	<arg name="node_spawn_delay" default="2s" />
+
+	<node pkg="rosservice" type="rosservice" name="load_turtle1" 
+		  args="call /spawn 1 6 0 'turtle1'"/>	
+
+	<node pkg="rosservice" type="rosservice" name="load_turtle2" 
+		  args="call /spawn 6 1 1.57 'turtle2'"/>
+	
+	<node pkg="tslinea" type="lead.py" name="el_movimiento" />
+	<node pkg="tslinea" type="follow.py" name="el_movimiento_2" />
+
+</launch>
